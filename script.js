@@ -32,10 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
    
    let HXOffset = -90;
    let SXOffset = -60;
+   const MOBILE_BREAKPOINT = 768;
+   const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
    const MIX_COLOR = "#DC143C"; // color for "C"
    const A_COLOR = "#C7C8CA"; // set the color you want for "A" here
-   // ...optionally set initial visible color for A if needed:
-   if (chars && chars[initialCharIndex] && chars[initialCharIndex].style) {
+   // only highlight the initial "A" on desktop — on mobile it should act like other chars
+   if (!isMobile() && chars && chars[initialCharIndex] && chars[initialCharIndex].style) {
      chars[initialCharIndex].style.color = "#FFFFFF";
    }
    
@@ -136,6 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
      chars,
      {
        yPercent: (index) => {
+         // on mobile treat all chars the same so "A" & "C" animate away with the rest
+         if (isMobile()) return index % 2 === 0 ? 100 : -100;
          if (index === initialCharIndex || index === lastCharIndex) {
            return 0;
          }
@@ -146,23 +150,35 @@ document.addEventListener("DOMContentLoaded", () => {
        stagger: 0.025,
        delay: 0.5,
        onStart: () => {
-         // guard: if the target chars aren't present, skip the positioning/mix-blend steps
+         // guard
          if (!initialChar || !lastChar) return;
+ 
+         // on mobile skip the A/C special positioning and blending — animate them away like other letters
+         if (isMobile()) {
+           // still shrink/shift header so animation sequence remains consistent
+           gsap.to(".preloader-header", {
+             y: "0.5rem",
+             scale: 0.35,
+             duration: 1.75,
+             ease: "hop",
+           });
+           return;
+         }
  
          const initialCharMask = initialChar.parentElement;
          const lastCharMask = lastChar.parentElement;
  
-         if(
+         if (
            initialCharMask &&
            initialCharMask.classList.contains("char-mask")
-         ){
+         ) {
            initialCharMask.style.overflow = "visible";
          }
  
-         if(
+         if (
            lastCharMask &&
            lastCharMask.classList.contains("char-mask")
-         ){
+         ) {
            lastCharMask.style.overflow = "visible";
          }
  

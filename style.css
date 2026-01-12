@@ -309,7 +309,7 @@ span {
 
 .mask-container {
 	/* radial mask so changing mask-size reveals the image */
-	-webkit-mask-image: url(B1.svg);
+-webkit-mask-image: url(B1.svg);
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	-webkit-mask-position: center center;
@@ -338,7 +338,7 @@ span {
 .preloader-copy p .line,
 .header-row h1 .line {
   position: absolute;
-  display: inline-block;
+display: inline-block;
   transform: translateY(0);
   will-change: transform;
 }
@@ -366,8 +366,9 @@ span {
 	gap: 16px;
 }
 
+
 .logo img{
-	width: 15%;
+	width: 35%;
   margin-bottom: 30px;
 }
 
@@ -466,11 +467,11 @@ span {
   }
 
   .preloader-header a {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .header h1{
-    font-size: 4rem;
+    font-size: 3rem;
     width: 100%;
     text-align: center;
   }
@@ -478,12 +479,13 @@ span {
   .hero-content{
     display: flex;
     flex-direction: column;
-    gap: 20rem;
-    transform: translate(-50%, -30%);
+    gap: 10rem;
+    transform: translate(-50%, -40%);
   }
 
  .header-vid video{
-    width: 23rem;
+    width: 20rem;
+    height: 20rem;
   }
 
 
