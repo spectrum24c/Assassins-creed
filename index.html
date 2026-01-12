@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="preloader">
+      <div class="progress-bar"></div>
+
+      <div class="preloader-images">
+        <div class="img">
+          <img
+            src="./images/AC Shadows_Fan Kit_Wallpapers_Horizontal-Faceoff.jpg"
+            alt=""
+          />
+        </div>
+        <div class="img">
+          <img
+            src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_3.png"
+            alt=""
+          />
+        </div>
+        <div class="img">
+          <img
+            src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_2.png"
+            alt=""
+          />
+        </div>
+        <div class="img">
+          <img
+            src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_1.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="preloader-copy">
+        <p>
+          Step into the Animus and relive the genetic memories of your
+          ancestors...
+        </p>
+      </div>
+    </div>
+
+    <div class="preloader-header">
+      <a href="#">Assassins <span>Creed</span></a>
+    </div>
+
+    <section class="hero">
+       <nav class="site-nav" role="navigation" aria-label="Main">
+      <div class="nav-inner">
+        <a class="logo" href="#"><img src="images/Assassin's Creed Shadow 1.png" alt=""></a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#spotlight">Explore</a></li>
+          <li><a href="#outro">Gameplay</a></li>
+          <li><a href="#preloader-header">Store</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+      <div class="hero-content">
+        <div class="header-content"> <div class="head"><h1>Claws of Awaji - Expansion</h1></div>
+        <div class="para"> <p>
+          Discover the upcoming expansion of Assassin's Creed Shadows. Travel to
+          a new distinctive region - the island of Awaji - a place of mysterious
+          beauty. Reclaim a lost treasure while avoiding the traps and ambushes
+          of deadly new foes. Get legendary Bô weapons for Naoe, unlock new
+          skills, gear, abilities, and get over 10 hours of additional content.
+          Available now.
+        </p></div></div>
+       
+        <div class="header-vid">
+          <video id="hero-video" src="./images/vid trial.mp4" muted playsinline preload="auto"></video>
+        </div>
+       </div>
+      
+    </section>
+
+    <section class="intro"></section>
+    <section class="spotlight">
+      <div class="header">
+        <h1 class="reveal-type" data-bg-color="#353535" data-fg-color="red">Explore <br> a mysterious <br> Island</h1>
+      </div>
+      <div class="spotlight-images">
+        <div class="row">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_3.png" alt="" class="img">
+        </div>
+
+         <div class="row">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_1.png" alt="" class="img">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_2.png" alt="" class="img">
+        </div>
+
+         <div class="row">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_CGI_2.png" alt="" class="img">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_2.png" alt="" class="img">
+      </div>
+
+       <div class="row">
+          <img src="./images/AC Shadows_Fan Kit_Wallpapers_Concept_3.png" alt="" class="img">
+          <img src="./images/Yasuke_thumbnail.png" alt="" class="img">
+        </div>
+
+      </div> 
+       <div class="mask-container">
+      <div class="mask-img">
+        <img src="./images/Desktop_ACSH_Expansion_Promo1.jpg" alt="">
+      </div>
+      <div class="header">
+        <h1>Feel the landscape</h1>
+      </div>
+    </div>
+    </section>
+    <section class="outro">
+      <div class="header">
+        <h1>Immerse in the gameplay</h1>
+      </div>
+    </section>
+
+   
+
+    <script src="./script.js"></script>
+    <script src="gsap.min.js"></script>
+    <script src="SplitText.min.js"></script>
+    <script src="CustomEase.min.js"></script>
+    <script src="ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script> 
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="script2.js"></script>
+
+    <!-- Start video when preloader is gone; click to unmute -->
+    <script>
+	// filepath: c:\Users\awoko\OneDrive\Desktop\Assasin's creed\index.html
+	(function () {
+		const video = document.getElementById('hero-video');
+		if (!video) return;
+		let started = false;
+
+		function startVideo() {
+			if (started) return;
+			started = true;
+			video.muted = true; // ensure muted for autoplay
+			const playPromise = video.play();
+			if (playPromise && playPromise.catch) playPromise.catch(() => { /* autoplay blocked */ });
+		}
+
+		const pre = document.querySelector('.preloader');
+
+		function checkHidden() {
+			if (!pre) return true;
+			const s = getComputedStyle(pre);
+			return s.display === 'none' || s.visibility === 'hidden' || parseFloat(s.opacity) === 0;
+		}
+
+		if (checkHidden()) {
+			startVideo();
+		} else if (pre) {
+			const mo = new MutationObserver(() => {
+				if (!document.body.contains(pre) || checkHidden()) {
+					mo.disconnect();
+					startVideo();
+				}
+			});
+			mo.observe(document.documentElement || document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['style', 'class'] });
+			// fallback: start after 12s if something goes wrong
+			setTimeout(startVideo, 12000);
+		} else {
+			// if no preloader found, start immediately
+			startVideo();
+		}
+
+		// Clicking the video unmutes it (user gesture)
+		video.addEventListener('click', () => {
+			if (video.muted) {
+				video.muted = false;
+				try { video.volume = 1; } catch (e) {}
+			}
+		});
+	})();
+</script>
+ <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const splitTypes = document.querySelectorAll('.reveal-type')
+
+        splitTypes.forEach((char,i) => {
+
+            const bg = char.dataset.bgColor
+            const fg = char.dataset.fgColor
+
+            const text = new SplitType(char, { types: 'chars' });
+
+            gsap.fromTo(text.chars, 
+                {
+                    color: bg,
+                },
+               {
+                color: fg,
+                duration: 0.3,
+                stagger: 0.02,
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    scrub: true,
+                },
+            })
+        });
+
+ 
+
+// Initialize a new Lenis instance for smooth scrolling
+const lenis = new Lenis();
+
+// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+lenis.on('scroll', ScrollTrigger.update);
+
+// Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+// This ensures Lenis's smooth scroll animation updates on each GSAP tick
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+});
+
+// Disable lag smoothing in GSAP to prevent any delay in scroll animations
+gsap.ticker.lagSmoothing(0);
+
+
+
+    </script>
+  </body>
+</html>

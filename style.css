@@ -1,0 +1,508 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+:root {
+  --light: #fff;
+  --dark: #000;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope";
+  background: var(--light);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero2{
+   height: 30rem;
+    display: grid;
+    place-content: center;
+    background-color: black;
+}
+
+.hero3{
+  background: url(./images/Desktop_ACSH_Expansion_Promo1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100svh;
+}
+
+.header h1{
+  text-transform: uppercase;
+  font-family: "Agdasima", sans-serif;
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.02rem;
+  width: 100%;
+  transform: translateX(-5%);
+}
+
+.row img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.outro, .imtro, .spotlight{
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  background-color: #161616;
+  color: #fff;
+  overflow: hidden;
+}
+
+.inro, .outro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 50%;
+  z-index: 1;
+}
+
+.spotlight{
+  background-color: #101010;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.spotlight-images{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateY(5%);
+  will-change: transform;
+}
+
+.row{
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.row .img{
+  flex: 1;
+  aspect-ratio: 5/7;
+  overflow: hidden;
+}
+
+.row img{
+  opacity: 0.5;
+  filter: grayscale(1);
+} 
+
+
+
+/* ensure mask starts closed */
+.mask-container {
+	-webkit-mask-size: 0%;
+	mask-size: 0%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+}
+
+.mask-container .mask-img{
+  width: 100%;
+  height: 100%;
+}
+
+/* .intro p{
+   font-size: clamp(2rem, 5vw, 5rem);
+   padding-top: 50px;
+   font-family: "Agdasima", sans-serif;
+   text-align: center;
+   place-content: center;
+   position: relative;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+} */
+
+.hero-content {
+  position: relative;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--light);
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  gap: -20rem;
+}
+
+.hero-content video{
+  width: 26rem;
+  height: 26rem;
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-content p{
+   text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 550;
+  width: 60%;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: 0.8px;
+  font-family: "Agdasima", sans-serif;
+  color: var(--light);
+  width: 50%;
+}
+
+p {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 550;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--light);
+  font-family: "Agdasima", sans-serif;
+  font-size: 7.5rem;
+  font-weight: 600;
+  line-height: 0.9;
+  display: block;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--dark);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background-color: var(--light);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.preloader-images {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  height: 25rem;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+  overflow: hidden;
+}
+
+.preloader-images .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+  overflow: hidden;
+}
+
+.preloader-images .img img {
+  position: absolute;
+  transform: scale(2);
+  will-change: transform;
+}
+
+.preloader-copy {
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  color: var(--light);
+}
+
+span {
+  color: #C1232C;
+}
+
+.preloader-header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(60svh);
+  transform-origin: top;
+  will-change: transform;
+  z-index: 2;
+}
+
+.hero {
+  width: 100%;
+  height: 100svh;
+  padding: 2rem;
+  overflow: hidden;
+  background: url(./images/ACSH_expansion_keyart_4K_desktop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; /* ensure centered by default */
+}
+
+.mask-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  -webkit-mask-size: 0;
+  mask-size: 0%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.mask-container {
+	/* radial mask so changing mask-size reveals the image */
+	-webkit-mask-image: url(B1.svg);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center center;
+	mask-position: center center;
+	-webkit-mask-size: 0% 0%; /* initial closed */
+	mask-size: 0% 0%;
+	overflow: hidden;
+}
+
+.mask-img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	pointer-events: none;
+	transform-origin: center center;
+}
+
+.mask-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* ensures image fills container and is fully revealed */
+	display: block;
+}
+
+.preloader-header a .char,
+.preloader-copy p .line,
+.header-row h1 .line {
+  position: absolute;
+  display: inline-block;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.site-nav {
+  height: 4rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 60;
+	backdrop-filter: blur(6px);
+	background: rgba(0,0,0,0.35);
+	padding: 10px 20px;
+  z-index: 1;
+}
+
+.nav-inner {
+	max-width: 1200px;
+  height: 4rem;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.logo img{
+	width: 15%;
+  margin-bottom: 30px;
+}
+
+.logo span { font-weight: 400; }
+
+.nav-links {
+	display: flex;
+	gap: 18px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-links a {
+	color: #fff;
+	text-decoration: none;
+	padding: 8px 6px;
+	font-weight: 600;
+  font-size: 2rem;
+  margin-top: -20px;
+	transition: opacity .15s ease;
+}
+
+.nav-links a:hover { opacity: 0.8; }
+
+.nav-toggle {
+	display: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 6px;
+	color: #fff;
+}
+
+.hamburger {
+	width: 22px;
+	height: 2px;
+	display: block;
+	background: #fff;
+	position: relative;
+}
+.hamburger::before,
+.hamburger::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: #fff;
+}
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
+/* Mobile */
+@media (max-width: 800px) {
+	.nav-toggle { display: block; }
+	.nav-links {
+		display: none;
+		position: fixed;
+		top: 60px;
+		right: 0;
+		background: rgba(0,0,0,0.95);
+		flex-direction: column;
+		padding: 20px;
+		width: 220px;
+		height: calc(100vh - 60px);
+		overflow-y: auto;
+	}
+	.site-nav.open .nav-links { display: flex; }
+	.nav-links a { padding: 10px 6px; }
+}
+
+/* ensure anchored sections are not hidden under fixed nav */
+.hero, .spotlight, .outro {
+	scroll-margin-top: 80px;
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+
+  .preloader-images {
+    top: 35%;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .preloader-copy {
+    width: 80%;
+  }
+
+  .preloader-header {
+    transform: translateY(50svh);
+  }
+
+  .preloader-header a {
+    font-size: 4rem;
+  }
+
+  .header h1{
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20rem;
+    transform: translate(-50%, -30%);
+  }
+
+ .header-vid video{
+    width: 23rem;
+  }
+
+
+  .header-content p, .header-content h1{
+    width: 100%;
+    line-height: 1.5;
+  }
+
+  .hero {
+    /* Fit the image to the viewport width on mobile to avoid zoom/cropping */
+    background-size: 100% cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  .hero3{
+    background-size: 100% cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+}
